@@ -2,17 +2,21 @@
 
 import { useState } from "react";
 import SearchManufacturer from "./SearchManufacturer";
+import { Combobox, Transition } from "@headlessui/react";
 
 const SearchBar = () => {
-    const [manufacturer, setManufacturer] = useState("");
+  const [manufacturer, setManufacturer] = useState("");
 
-    const handleSearch = () => {};
-    return (
-        <form onSubmit={handleSearch} className="searchbar">
-            <div className="searchbar__item">
-                <SearchManufacturer />
-            </div>
-        </form>
-    );
+  const handleSearch = () => {};
+  return (
+    <form onSubmit={handleSearch} className="searchbar">
+      <div className="searchbar__item">
+        <SearchManufacturer
+          manufacturer={manufacturer}
+          setManufacturer={setManufacturer}
+        />
+      </div>
+    </form>
+  );
 };
 export default SearchBar;
