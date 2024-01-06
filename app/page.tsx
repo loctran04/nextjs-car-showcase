@@ -6,7 +6,6 @@ import CarCard from "@/components/CarCard";
 import { CarProperty } from "@/types";
 export default async function Home() {
     const allCars = await fetchCars({ model: "corolla" });
-    console.log(allCars);
     const isListEmpty = !allCars || !allCars.length;
     return (
         <main className="overflow-hidden">
