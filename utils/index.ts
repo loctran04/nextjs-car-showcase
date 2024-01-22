@@ -1,5 +1,3 @@
-import { env } from "process";
-
 export default async function fetchCars(params = {}) {
     const searchParams = new URLSearchParams(params);
     const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?${searchParams}`;

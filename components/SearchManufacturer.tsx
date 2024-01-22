@@ -21,7 +21,7 @@ const SearchManufacturer = ({
         );
   return (
     <div className="search-manufacturer">
-      <Combobox>
+      <Combobox value={manufacturer} onChange={setManufacturer}>
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image
@@ -45,27 +45,24 @@ const SearchManufacturer = ({
             leaveTo="opacity-0"
             afterLeave={() => setQuery("")}
           >
-            <Combobox.Options>
-              {!filteredManufacturers.length && query !== "" ? (
-                <Combobox.Option
-                  className="search-manufacturer__option"
-                  value={query}
-                >
-                  Create "{query}"
-                </Combobox.Option>
-              ) : (
-                filteredManufacturers.map((made) => {
-                  return (
-                    <Combobox.Option
-                      key={made}
-                      className="search-manufacturer__option"
-                      value={made}
-                    >
-                      {made}
-                    </Combobox.Option>
-                  );
-                })
-              )}
+            <Combobox.Options className="search-manufacturer__options">
+              {filteredManufacturers.map((made) => {
+                return (
+                  <Combobox.Option key={made} value={made} as={Fragment}>
+                    {({ active, selected }) => (
+                      <li
+                        className={`${
+                          active
+                            ? "bg-blue-500 text-white"
+                            : "bg-white text-black"
+                        } search-manufacturer__option`}
+                      >
+                        {made}
+                      </li>
+                    )}
+                  </Combobox.Option>
+                );
+              })}
             </Combobox.Options>
           </Transition>
         </div>
